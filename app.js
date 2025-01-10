@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import mongoSanitize from 'express-mongo-sanitize';
 import rateLimit from 'express-rate-limit';
 import { fetchCryptoData } from './controllers/cryptoController.js';
+import router from './routes/routes.js';
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(
 );
 
 app.use(cors());
+app.use(router);
 
 // Schedule the job to run every 2 hours
 cron.schedule('* */2 * * *', () => {
