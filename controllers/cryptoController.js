@@ -5,6 +5,10 @@ import logger from '../utils/logger.js';
 import asyncHandler from 'express-async-handler';
 import AppError from '../utils/appError.js';
 
+/**
+ *
+ * @desc Fetches the cryptocurrency data from the API
+ */
 const fetchCryptoData = async () => {
   try {
     const result = await axios({
@@ -44,6 +48,11 @@ const fetchCryptoData = async () => {
   }
 };
 
+/**
+ * @desc Get the latest stats for a given coin
+ * @route GET /stats
+ * @access Public
+ */
 const getStats = asyncHandler(async (req, res, next) => {
   const coin = req.query.coin;
 
@@ -68,6 +77,11 @@ const getStats = asyncHandler(async (req, res, next) => {
   });
 });
 
+/**
+ * @desc Get the deviation for a given coin
+ * @route GET /deviation
+ * @access Public
+ */
 const getDeviation = asyncHandler(async (req, res, next) => {
   const coin = req.query.coin;
 
