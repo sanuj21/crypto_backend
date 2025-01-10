@@ -26,7 +26,7 @@ app.use(
 app.use(cors());
 
 // Schedule the job to run every 2 hours
-cron.schedule('0 */2 * * *', () => {
+cron.schedule('* */2 * * *', () => {
   console.log('Fetching cryptocurrency data...');
   fetchCryptoData();
 });

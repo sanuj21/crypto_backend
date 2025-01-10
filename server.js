@@ -10,19 +10,8 @@ process.on('uncaughtException', (err) => {
 
 import app from './app.js';
 
-const DB = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD,
-);
-
 mongoose
-  .connect(process.env.DATABASE_LOCAL)
-  // .connect(DB, {
-  //   useNewUrlParser: true,
-  //   useCreateIndex: true,
-  //   useFindAndModify: false,
-  //   useUnifiedTopology: true,
-  // })
+  .connect(process.env.DATABASE)
   .then((con) => {
     console.log('DB connection successful!');
   })
