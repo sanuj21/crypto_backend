@@ -6,9 +6,11 @@ import mongoSanitize from 'express-mongo-sanitize';
 import rateLimit from 'express-rate-limit';
 import { fetchCryptoData } from './controllers/cryptoController.js';
 import router from './routes/routes.js';
+import globalErrorHandler from './controllers/errorController.js';
 
 const app = express();
 
+// Middlewares
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -21,9 +23,7 @@ app.use(
     message: 'Too many attempts!! Please try again after one hour',
   }),
 );
-
 app.use(cors());
-app.use(router);
 
 // Schedule the job to run every 2 hours
 cron.schedule('* */2 * * *', () => {
@@ -31,7 +31,9 @@ cron.schedule('* */2 * * *', () => {
   fetchCryptoData();
 });
 
-// Fetch the data for the first time
-fetchCryptoData();
+app.use(router);
+
+// Error handling middleware
+app.use(globalErrorHandler);
 
 export default app;
