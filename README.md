@@ -68,3 +68,11 @@ Utliized Cron Job to fetch the data from the API every 2 hour and store it in th
     "deviation": 3.4
   }
   ```
+
+## For Testing
+
+Run the following command to run the test cases
+
+```bash
+npm test
+```
