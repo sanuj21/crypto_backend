@@ -12,7 +12,7 @@ describe('Crypto API', () => {
   // Test the /GET stats route
   describe('/GET stats', () => {
     it('should get the latest stats', async () => {
-      const res = await request(server).get('/stats');
+      const res = await request(server).get('/stats?coin=bitcoin');
       expect(res.status).toBe(200);
       expect(res.body).toHaveProperty('status', 'success');
       expect(res.body).toHaveProperty('price');
@@ -24,7 +24,7 @@ describe('Crypto API', () => {
   // Test the /GET deviation route
   describe('/GET deviation', () => {
     it('should get the deviation', async () => {
-      const res = await request(server).get('/deviation');
+      const res = await request(server).get('/deviation?coin=bitcoin');
       expect(res.status).toBe(200);
       expect(res.body).toHaveProperty('status', 'success');
       expect(res.body).toHaveProperty('deviation');
