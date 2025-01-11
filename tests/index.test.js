@@ -1,5 +1,6 @@
 import request from 'supertest';
 import server from '../server.js';
+import mongoose from 'mongoose';
 
 describe('Crypto API', () => {
   describe('GET /', () => {

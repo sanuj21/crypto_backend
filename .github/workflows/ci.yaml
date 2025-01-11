@@ -25,6 +25,8 @@ jobs:
         run: npm i pnpm -g && pnpm install
 
       - name: 'Run Tests'
+        env:
+          DATABASE: ${{ secrets.DATABASE }}
         run: pnpm run test
 
   # Run the linter to check for code style issues
